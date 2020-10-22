@@ -40,9 +40,14 @@ def Cacul_Avg(data):
 
 def Plot(data_1X, data_UX, SD_1X, SD_UX,type,fitness):
 
+    # Convert type of Problem size string to int
+    Problem_size_1X = [int(key) for key in data_1X.keys()]
+    Problem_size_UX = [int(key) for key in data_UX.keys()]
+
+
     fig, ax = plt.subplots()
-    ax.errorbar(data_1X.keys(), data_1X.values(), yerr=SD_1X.values() , fmt='-o', color='limegreen', label = 'Single Point Cross-over')
-    ax.errorbar(data_UX.keys(), data_UX.values(), yerr=SD_UX.values() , fmt='-o', color='crimson', label = 'Uniform Cross-over')
+    ax.errorbar(Problem_size_1X, data_1X.values(), yerr=SD_1X.values() , fmt='-o', color='limegreen', label = 'Single Point Cross-over')
+    ax.errorbar(Problem_size_UX, data_UX.values(), yerr=SD_UX.values() , fmt='-o', color='crimson', label = 'Uniform Cross-over')
     ax.set_title(fitness +"_" + type)
     ax.set_xlabel('Problem Size')
     ax.set_ylabel('No.')
@@ -51,13 +56,13 @@ def Plot(data_1X, data_UX, SD_1X, SD_UX,type,fitness):
     plt.legend()
 
     # save
-    file_fig = "Experience_" + fitness + "_" + type +".png"
+    file_fig = "../Experimental_Visualization/Experience_" + fitness + "_" + type +".png"
     plt.savefig(file_fig)
 
 def main(args):
     # Step 1: Load data 
-    file_data_1X = "Experience_1X_" + args["Fitness"] + ".json"
-    file_data_UX = "Experience_UX_" + args["Fitness"] + ".json"
+    file_data_1X = "../Experimental_Result/Experience_1X_" + args["Fitness"] + ".json"
+    file_data_UX = "../Experimental_Result/Experience_UX_" + args["Fitness"] + ".json"
     print(file_data_1X)
     print(file_data_UX)
     data_1X, data_UX = Load_data(file_data_1X, file_data_UX,args['Type'])
