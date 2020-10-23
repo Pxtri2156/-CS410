@@ -53,6 +53,8 @@ def Plot(data_1X, data_UX, SD_1X, SD_UX,type,fitness):
     ax.set_ylabel('No.')
     plt.xscale('log')
     plt.yscale('log')
+    plt.xticks([10, 20, 40, 80, 160])
+    ax.set_xticklabels(['10', '20', '40', '80', '160'])
     plt.legend()
 
     # save
