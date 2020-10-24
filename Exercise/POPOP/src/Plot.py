@@ -43,7 +43,8 @@ def Plot(data_1X, data_UX, SD_1X, SD_UX,type,fitness):
     # Convert type of Problem size string to int
     Problem_size_1X = [int(key) for key in data_1X.keys()]
     Problem_size_UX = [int(key) for key in data_UX.keys()]
-
+    
+    # 
 
     fig, ax = plt.subplots()
     ax.errorbar(Problem_size_1X, data_1X.values(), yerr=SD_1X.values() , fmt='-o', color='limegreen', label = 'Single Point Cross-over')
