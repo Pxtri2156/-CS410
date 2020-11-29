@@ -27,7 +27,6 @@ class Pso:
         self.n_eval = 0
 
         self.log = {
-            'log_population': [],
             'best_solution': None,
             'val_best_solution':None,
             'dis_true_global':None,
@@ -124,7 +123,6 @@ class Pso:
             type_function, self.population_size, self.problem_size, name_topology))
 
         # Save log
-        self.log["log_population"].append(self.population.tolist())
        
         # print("Current population", self.population)
 
@@ -155,10 +153,6 @@ class Pso:
                 + self.acceleration[1]*self.vector_random[0,1]*(social - self.population) 
                 ## Infer new population
                 self.population = self.population + velocity
-
-                ## Save log:
-                self.log["log_population"].append(self.population.tolist())
-               
 
                 ## Check range 
                 self.check_range()
@@ -193,8 +187,6 @@ class Pso:
                 # print('Velocity \n', velocity) 
                 ## Infer new population
                 self.population = self.population + velocity
-                ## Wrtie log
-                self.log["log_population"].append(self.population.tolist())
                 # input("Fix bug")
                 ## Check range
                 
