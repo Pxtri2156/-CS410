@@ -6,7 +6,7 @@ def rastrigin(X):
     # arg: + n is dimension of data 
     #        X is vector
     # 
-    return 10*len(X) + np.sum(X**2 + 10*np.cos(2*np.pi*X))
+    return 10*len(X) + np.sum(X**2 - 10*np.cos(2*np.pi*X))
  
 
 def rosenbrock(X):
